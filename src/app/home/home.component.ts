@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'home',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  userLogged: any;
+  isLogged: boolean;
 
-  constructor() { }
+  constructor(
+    private authService: SocialAuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.authService.authState.subscribe(
+      data => {
+        this.userLogged = data;
+        this.isLogged = (this.userLogged != null);
+      }
+    );
   }
-
 }

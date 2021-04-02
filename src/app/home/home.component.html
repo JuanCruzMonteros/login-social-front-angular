@@ -1,2 +1,9 @@
 <menu></menu>
-<p>home works!</p>
+<div class="contenedor">
+
+    <div class="logged" *ngIf="isLogged">Hola {{userLogged.name}}</div>
+
+    <div class="noLogged" *ngIf="!isLogged">
+        Hola Visitante
+    </div>
+</div>
