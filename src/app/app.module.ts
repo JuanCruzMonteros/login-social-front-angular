@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
+import { HttpClientModule } from '@angular/common/http';
 // social logins
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { ProductosComponent } from './productos/productos.component';
-
+import { ProductoInterceptor } from './interceptors/producto.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { ProductosComponent } from './productos/productos.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -48,7 +49,8 @@ import { ProductosComponent } from './productos/productos.component';
           }
         ]
       } as SocialAuthServiceConfig,
-    }
+    },
+    ProductoInterceptor
   ],
   bootstrap: [AppComponent]
 })
